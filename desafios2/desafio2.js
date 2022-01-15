@@ -136,3 +136,5 @@ console.log(res);
 //  title: (nombre del producto),
 //  price: (precio),
 //  thumbnail: (url de la foto del producto)
+
+///////asd
