@@ -51,41 +51,41 @@
 
 let fs = require("fs")
 
-class Producto{
-    constructor(nombre, precio, foto){
+class Producto {
+    constructor(nombre, precio, foto) {
         this.nombre = nombre;
         this.precio = precio;
         this.foto = foto;
     }
 }
 
-class ContenedorDeProductos{
-    constructor(url_archivo){
+class ContenedorDeProductos {
+    constructor(url_archivo) {
 
         this.url = url_archivo;
         this.arrayProductos = [];
     }
 
-    save(Object){
-        try{
+    save(Object) {
+        try {
             this.arrayProductos.push(Object);
             let json = JSON.stringify(this.arrayProductos);
             let mi_obj = fs.appendFileSync(`${this.url}`, json, "utf-8");
-            
+
             return Object.id;
-        }catch(error){
-        console.log(error);
-    }
-    }
-
-
-        
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
-let objeto1 = {nombre: "Fernando", apellido: "Mingrone", id: 1};
-let objeto2 = {nombre: "Alejandro", apellido: "Mingronfe", id: 2};
-let objeto3 = {nombre: "Patricio", apellido: "Mingroneds", id: 3};
+
+}
+
+
+let objeto1 = { nombre: "Fernando", apellido: "Mingrone", id: 1 };
+let objeto2 = { nombre: "Alejandro", apellido: "Mingronfe", id: 2 };
+let objeto3 = { nombre: "Patricio", apellido: "Mingroneds", id: 3 };
 let controlador = new ContenedorDeProductos("./productos.txt");
 let res = controlador.save(objeto1);
 console.log(res);
@@ -137,4 +137,4 @@ console.log(res);
 //  price: (precio),
 //  thumbnail: (url de la foto del producto)
 
-///////asd
+///////asdasd
