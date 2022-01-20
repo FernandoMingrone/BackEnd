@@ -2,7 +2,7 @@
   "name": "primer-servidor",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index_express.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index_express.js",
