@@ -121,8 +121,8 @@ archivoDeProductos.save("Auto", 800000, "https://picsum.photos/id/111/600/300", 
 
 
 app.get("/", (req, res, next)=>{ 
-    res.send(`<h1 style="font-size:60px">Servidor con Express</h1><h1 style="color:green">Lista de productos en http://localhost:8080/productos</h1><br>
-    <h1 style="color:red">Producto aleatorio en http://localhost:8080/productoRandom</h1>  `)
+    res.send(`<h1 style="font-size:60px">Servidor con Express</h1><h1 style="color:green">Lista de productos en http://localhost:8080/productos <br> https://sponge-carpal-hill.glitch.me/productos  </h1>
+    <h1 style="color:red">Producto aleatorio en http://localhost:8080/productoRandom <br> https://sponge-carpal-hill.glitch.me/productoRandom</h1>  `)
 });
 
 
