@@ -55,8 +55,8 @@ class ContenedorDeProductos {
     getAll() {
         try {
             let contenido = fs.readFileSync(this.url, "utf-8");
-            let contenidoString = JSON.stringify(contenido);
-            return contenidoString;
+            let contenidoParse = JSON.parse(contenido);
+            return contenidoParse;
         }
         catch(err) {
             console.log("Error de lectura!", err);
