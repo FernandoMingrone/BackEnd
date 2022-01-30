@@ -5,8 +5,8 @@
   "main": "clase4.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon clase4.js",
-    "start": "node clase4.js"
+    "dev": "nodemon desafio4_ApiRESTful.js",
+    "start": "node desafio4_ApiRESTful.js"
   },
   "keywords": [],
   "author": "",

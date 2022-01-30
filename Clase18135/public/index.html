@@ -11,25 +11,32 @@
 </head>
 
 <body>
+    <h1 style="font-size: 3em; text-align: center; padding: 2em 3em 0 0;">Ingrese sus productos</h1>
     <div class="container">
         <div style= "display: flex;
-                    justify-content: space-between;
+                    justify-content: center;
                     align-items: flex-start;
                     max-width: 700px;
                     width: 100%;
-                    margin: 110px auto 0px;">
+                    margin: 110px auto 0px ;">
                 <div>
-                    <form id="mascotas" action="/uploadfile" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="myFile">
-                        <input class="btn btn-info" type="submit" value="Agregar Archivo">
+                    <form id="productos" action="/api/productos" method="POST">
+                        <input style="margin: 2em 0;" type="text" name="title" placeholder="title">
+                        <input type="text" name="price" placeholder="price">
+                        <input type="text" name="thumbnail" placeholder="url image">
+                        <input style="display: block; margin: 1em 1em;" class="btn btn-info" type="submit" value="Agregar Producto">
                     </form>
                 </div>
-                <div>
-                    <form id="personas" action="/uploadmultifile" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="myFiles">
-                        <input class="btn btn-info" type="submit" value="Agregar varios Archivos">
-                    </form>
-                </div>
+
+
+<!-- http://unsplash.it/300/300 -->
+
+                    <!-- AGREGAR UNA FOTO COMO ARCHIVO -->
+                    <!-- <form id="productos" action="/uploadfile" method="POST" enctype="multipart/form-data">
+                        <input style="margin: 2em 0;" type="file" name="myFile" placeholder="archivo de imagen">
+                        <input class="btn btn-info" type="submit" value="Agregar Archivo de Imagen">
+                    </form>  -->
+            
 
         </div>
 
@@ -45,3 +52,39 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+<!--PARA SUBIR ARCHIVOS-->
+<!-- 
+
+        <div>
+            <form id="mascotas" action="/uploadfile" method="POST" enctype="multipart/form-data">
+                <input type="file" name="myFile">
+                <input class="btn btn-info" type="submit" value="Agregar Archivo">
+            </form>
+        </div>
+        <div>
+            <form id="personas" action="/uploadmultifile" method="POST" enctype="multipart/form-data">
+                <input type="file" name="myFiles">
+                <input class="btn btn-info" type="submit" value="Agregar varios Archivos">
+            </form>
+        </div> -->
+
+<!-- PARA SUBIR PERSONAS Y MASCOTAS -->
+
+<!-- <div>
+    <form id="personas" action="/personas" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="apellido" placeholder="apellido">
+        <input type="text" name="edad" placeholder="edad">
+        <input class="btn btn-info" type="submit" value="Agregar Persona">
+    </form>
+</div>
+<div>
+    <form id="mascotas" action="/mascotas" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="raza" placeholder="raza">
+        <input type="text" name="edad" placeholder="edad">
+        <input class="btn btn-info" type="submit" value="Agregar Mascota">
+    </form>
+</div>
+         -->
