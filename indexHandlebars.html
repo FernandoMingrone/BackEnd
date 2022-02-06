@@ -8,8 +8,12 @@
 </head>
 
 <body>
+
     <span></span> <!-- para inyectar el resultado -->
     <!-- incluir handlebars desde el CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous"></script>
 
 <script>
     const templateString = `
@@ -22,30 +26,23 @@
         <li>{{telefono}} </li>
     </ul>
     `;
-    let template = Handlebars.compile
 
 
 
-
-
-
-let template = Handlebars.compile(templateString); // compila la plantilla
-let data = {
+document.querySelector('span').innerHTML = Handlebars.compile(templateString)({
     nombre: "Mauro",
     apellido: "Di Cesare",
     edad: 27,
     email: "mauro@dicesare.com",
     telefono: 12343513,
-} // genera el html
-let html = template(data);
-
-document.querySelector('span').innerHTML = html; // inyecta el resultado en la vista
+}); // compila la plantilla
 
 
 
 </script>
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous"></script> 
+
 </body>
 
 </html>
+
