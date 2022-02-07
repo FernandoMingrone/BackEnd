@@ -22,7 +22,7 @@ app.get('/', (req, res, next) =>  {
 app.get('/productos', async (req, res, next) =>  {
     let productos = await contenedor.getAll();
     productos = JSON.parse(productos);
-    res.render('listado', {productos});
+    res.render('mostrarProductos', {productos});
 });
 
 
