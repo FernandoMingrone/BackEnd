@@ -20,8 +20,8 @@ const { Router } = express;
 let productos = [];
 let routerProductos = new Router();
 
-// app.use("/folder", express.static("Clase18135"));
-//busca el index.html
+app.use("/folder", express.static("Clase18135"));
+// busca el index.html
 app.use(express.static("Clase18135"));
 // http://localhost:8080/public/
 
