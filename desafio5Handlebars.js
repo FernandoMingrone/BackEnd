@@ -67,6 +67,7 @@ routerProductos.post('/', (req, res, next) => {
     contenedor.save(producto).then(data => {
         res.json({atencion: "producto guardado"});
         res.redirect("/");
+        // res.render("index")
     });
 });
 
