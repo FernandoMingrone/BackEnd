@@ -30,15 +30,6 @@
 // imágenes de los productos (click derecho sobre la imagen -> copiar dirección de la
 // imagen)
 
-/* Realizar un proyecto de servidor basado en node.js y express que ofrezca una API RESTful de productos. En detalle, que incorpore las siguientes rutas:
-
-GET '/api/productos' -> devuelve todos los productos.
-GET '/api/productos/:id' -> devuelve un producto según su id.
-POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.
-PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
-DELETE '/api/productos/:id' -> elimina un producto según su id. */
-
-
 const express = require("express");
 let { config } = require("./config");
 const contenedor = require("./controlador/contenedor");
@@ -47,18 +38,13 @@ const hbs = require("express-handlebars")
 const PORT = config.port;
 
 
-let productos = [];
-
-// app.use("/folder", express.static("Clase18135"));
-//busca el index.html
-// app.use(express.static("Clase18135"));
-// http://localhost:8080/public/
-
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.engine("handlebars", hbs.engine());
 app.set("views", "./views/hbs")
 app.set("view engine", "handlebars")
+
+
 
 app.get("/"), (req, res, next) => {
     res.render("formulario");
@@ -77,78 +63,6 @@ app.post('/productos', async (req, res, next) => {
     await contenedor.save(producto);
         res.redirect("/");
     });
-
-
-
-
-// app.post("/personas", (req, res, next) => { 
-//     personas.push(req.body);
-//     console.log(req.body);
-//     res.redirect("/");
-// })
-    //devuelve todos los productos
-
-
-//1) GET '/api/productos' -> devuelve todos los productos.
-
-app.get("/", (req, res, next)=>{ 
-    contenedor.getAll().then(productos=> {
-        // let productos = JSON.parse(data);
-        // res.json(productos);
-        res.render("index", {productos});
-    })
-
-    //devuelve todos los productos
-})
-
-///2) GET '/api/productos/:id' -> devuelve un producto según su id.
-
-
-app.get("/:id", (req, res, next)=>{ 
-
-    contenedor.getById(req.params.id).then(data => {
-        if(data.id!=undefined){
-            res.json(data);
-        } else {
-            res.json({ error : 'producto no encontrado' });
-            
-        }
-    })
-});
-
-//3) POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.
-
-
-// app.post('/', (req, res, next) => {
-//     let producto = req.body;
-//     contenedor.save(producto).then(data => {
-//         res.json({atencion: "producto guardado"});
-//     });
-// });
-
-
-//4)PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
-
-
-
-app.put("/:id", (req, res, next)=>{ 
-    let producto = req.body;
-    contenedor.update(req.params.id, producto).then(data => {
-        res.json(data)
-    });
-});
-
-
-////5)DELETE '/api/productos/:id' -> elimina un producto según su id. */
-
-
-
-
-app.delete("/:id", (req, res, next)=>{ 
-    contenedor.deleteById(req.params.id).then(data => {
-        res.json({ atencion: 'producto eliminado' });
-    });
-});
 
 
 
