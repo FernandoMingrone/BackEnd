@@ -1,3 +1,1 @@
-[{"title":"Notebook","price":75000,"thumbnail":"https://picsum.photos/id/0/600/300","id":1},
-{"title":"Notebook","price":920000,"thumbnail":"https://picsum.photos/id/143/600/300","id":2}
-,{"title":"Auto","price":800000,"thumbnail":"https://picsum.photos/id/111/600/300","id":3}]
+[{"title":"Notebook","price":75000,"thumbnail":"https://picsum.photos/id/0/600/300","id":1},{"title":"Notebook","price":920000,"thumbnail":"https://picsum.photos/id/143/600/300","id":2},{"title":"Auto","price":800000,"thumbnail":"https://picsum.photos/id/111/600/300","id":3},{"title":"mate","price":"33","url":"www.unsplash.it/300/300","id":4}]
