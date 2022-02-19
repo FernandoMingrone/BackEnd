@@ -5,9 +5,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handlebars</title>
+    {{#each css}}
+        <link rel="stylesheet" href="/css/{{this}}">
+    {{/each}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="./socket.io/socket.io.js"></script>
 </head>
 <body>
-    {{{body}}}
+    
+    <div class="container" style="min-width: 1000px" >{{{body}}}</div>
+    <script>
+        const socket = new io()
+
+        let form_data_user = document.getElementById("add");
+        let productosAgregados = document.getElementById("productosAgregados");
+
+        form_data_user.addEventListener("submit", e => {
+
+            e.preventDefault(); //para que no me recargue la pagina al hacer click
+
+            let client = {
+                title: e.target[0].value,
+                price: e.target[1].value,
+                thumbnail: e.target[2].value,
+                user: e.target[3].value,
+            }
+
+            if (client.user == "" || client.title == "" || client.thumbnail == "" || client.price == "") window.location.reload();
+            socket.emit("from_front", client);
+
+
+            socket.on("fill_message", data =>{
+                console.log(data);
+                if(data.length > 0){
+
+                fill_message(data);
+                }
+            })
+        })
+
+        socket.on("mi mensaje", data => {
+            alert(data)
+            socket.emit("notificacion", "mensaje recibido exitosamente")
+        })
+
+          function fill_message(data) {
+            let sms_html = ``;
+            for (const sms of data) {
+                sms_html += `
+                            <div class="cardStyle p-3">
+                                <div style="width: 300px" class="card mb-3 nombreProductoCard">
+                                    <h3 class="card-header card-header-height">${sms.title}</h3>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Summer Collection</h5>
+                                        <h6 class="card-subtitle text-muted">2022</h6>
+                                    </div>
+                                    <img style="width: 290px;" src="${sms.thumbnail}" alt="" />
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">$${sms.price}</li>
+                                    </ul>
+                                    <div class="card-body">
+                                    <button id="">
+                                        Comprar
+                                    </button>
+                                    </div>
+                                </div>
+                                
+                                </div>
+                            </div>
+                    `
+            };
+            productosAgregados.innerHTML = sms_html;
+
+            console.log("desde fill_message", sms_html)
+        }
+
+        socket.emit("desdeFront", form_data_user)
+
+
+////CHAT
+
+let form_data_userChat = document.getElementById("data_userChat");
+    let users_Chat = document.getElementById("user_listChat");
+    let parrafoChat = document.getElementById("parrafoChat");
+
+
+    form_data_userChat.addEventListener("submit", e =>{
+        e.preventDefault();
+
+        console.log()
+        let student = {
+            email: e.target[0].value,
+            user: e.target[1].value,
+            message: e.target[2].value
+        }
+        if(student.email == "" || student.user == "" || student.message == "") window.location.reload();
+        socket.emit("from_frontChat", student);
+    })
+    
+    socket.on("fill_messageChat", data =>{
+        fill_messageChat(data);
+    });
+    socket.on("errorChat", data =>{
+        alert(data);
+    });
+    socket.on("initChat", data =>{
+        console.log("desde initChat",data);
+        if(data.length > 0 ){
+            fill_usersChat(data.users);
+            fill_messageChat(data.students);
+            console.log(data.students)
+        }
+    });
+    function fill_messageChat(data){
+        let sms_html = ``;
+        for (const sms of data) {
+            sms_html += `<b>${sms.user}:</b> <span>${sms.message}</span> <i>${sms.date}</i><br>`;
+        }
+        parrafoChat.innerHTML = sms_html;
+    }
+    
+    function fill_usersChat(data){
+        console.log("q8719287312730127093ssssssssssssssssssssssssssssssssssss");
+        let sms_htmlUsers = ``;
+        for (const smsUsers of data) {
+            sms_htmlUsers += `<li>
+                            <span class="${smsUsers.user}"></span> <h6>${smsUsers.email}</h6><h6>${smsUsers.status}</h6>
+                        </li>`;
+        }
+        console.log("desde fill_users", sms_htmlUsers)
+        users_Chat.innerHTML = sms_htmlUsers;
+    }
+       
+    </script>
 </body>
 
 </html> 

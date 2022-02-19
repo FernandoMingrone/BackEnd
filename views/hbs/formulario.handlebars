@@ -1,0 +1,39 @@
+<h1 style="text-align: center">Ingrese Producto</h1>
+<form class="prod-form" id="add" action="/productos" method="POST">
+    <div class="d-flex flex-column align-items-center">
+        <form id="productos" action="/api/productos" method="POST">
+                        <input style="margin: 2em 0;" type="text" name="title" placeholder="title">
+                        <input type="text" name="price" placeholder="price"><br>
+                        <input type="text" name="thumbnail" placeholder="url image">
+                        <input style="display: block; margin: 1em 1em;" class="btn btn-info" type="submit" value="Agregar Producto">
+                    </form>
+    </div>
+</form>
+
+<div class="mt-2 d-flex flex-column align-items-center">
+    <a class="btn btn-primary" href="/productos">Mostrar Producto</a>
+</div>
+<div style="display: flex;" id="productosAgregados"></div>
+
+
+  <div class="container_chat_global">
+        <h2>Clase</h2>
+        <div class="container_chat">
+            <div>
+                <div class="chat">
+                    <form id="data_userChat">
+                        <input id="email" type="text" name="email" placeholder="Ingresa tu email">
+                        <input id="user_name" type="text" name="user" placeholder="Ingresa tu usuario">
+                        <input id="mensaje" type="text" name="message" placeholder="Ingresa tu mensaje">
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+                <p id="parrafoChat"></p>
+            </div>
+            <div class="users card">
+                <h3>Todos los usuarios</h3>
+                <ul id="user_listChat">
+                </ul>
+            </div>
+        </div>
+    </div>

@@ -5,8 +5,5 @@ let config = {
     class: process.env.CLASE
 }
 
-let sockets = {
 
-}
-
-module.exports = { config, sockets }
+module.exports = { config }
